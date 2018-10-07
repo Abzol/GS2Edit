@@ -1,0 +1,43 @@
+# Project: GSdatahandler
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = dllmain.o strings.o compression.o spacemanager.o $(RES)
+LINKOBJ  = dllmain.o strings.o compression.o spacemanager.o $(RES)
+LIBS =  -L"E:/Dev-Cpp/lib" --no-export-all-symbols --add-stdcall-alias  -s 
+INCS =  -I"E:/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Dev-Cpp/include/c++/3.4.2"  -I"E:/Dev-Cpp/include" 
+BIN  = GSdatahandler.dll
+CXXFLAGS = $(CXXINCS) -DBUILDING_DLL=1   -fexpensive-optimizations -O3
+CFLAGS = $(INCS) -DBUILDING_DLL=1   -fexpensive-optimizations -O3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before GSdatahandler.dll all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+DLLWRAP=dllwrap.exe
+DEFFILE=libGSdatahandler.def
+STATICLIB=libGSdatahandler.a
+
+$(BIN): $(LINKOBJ)
+	$(DLLWRAP) --output-def $(DEFFILE) --driver-name c++ --implib $(STATICLIB) $(LINKOBJ) $(LIBS) -o $(BIN)
+
+dllmain.o: dllmain.cpp
+	$(CPP) -c dllmain.cpp -o dllmain.o $(CXXFLAGS)
+
+strings.o: strings.cpp
+	$(CPP) -c strings.cpp -o strings.o $(CXXFLAGS)
+
+compression.o: compression.cpp
+	$(CPP) -c compression.cpp -o compression.o $(CXXFLAGS)
+
+spacemanager.o: spacemanager.cpp
+	$(CPP) -c spacemanager.cpp -o spacemanager.o $(CXXFLAGS)

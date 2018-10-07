@@ -1,0 +1,21 @@
+; dlltool --base-file C:\Users\Josh\AppData\Local\Temp/cca07928.base --output-exp GSdatahandler.exp --dllname GSdatahandler.dll --output-def libGSdatahandler.def --no-export-all-symbols --add-stdcall-alias --exclude-symbol=DllMainCRTStartup@12 --def C:\Users\Josh\AppData\Local\Temp/cca07928.def --output-lib libGSdatahandler.a
+EXPORTS
+	claimSpace @ 1
+	closeFile @ 2
+	compress @ 3
+	compressString @ 4
+	createTileset @ 5
+	decompress @ 6
+	decompress16 @ 7
+	decompressMap @ 8
+	decompressMap2 @ 9
+	decompressString @ 10
+	decompressTileData @ 11
+	exportFont @ 12
+	fileExtract @ 13
+	findSpace @ 14
+	freeSpace @ 15
+	getVersion @ 16
+	insertFile @ 17
+	loadFile @ 18
+	replaceString @ 19
